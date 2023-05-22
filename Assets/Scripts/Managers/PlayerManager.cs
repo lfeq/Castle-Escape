@@ -18,10 +18,12 @@ public class PlayerManager : MonoBehaviour {
 
     private Animator animator;
     private PlayerState playerState;
+    private Rigidbody2D rb2d;
 
     private void Awake() {
         instance = this;
         playerState = PlayerState.None;
+        rb2d = GetComponent<Rigidbody2D>();
     }
 
     // Start is called before the first frame update
@@ -55,6 +57,7 @@ public class PlayerManager : MonoBehaviour {
                 animator.SetBool("isFalling", true);
                 break;
             case PlayerState.Dead:
+                rb2d.velocity = new Vector2(0, 0);
                 animator.SetBool("isDying", true);
                 break;
         }
