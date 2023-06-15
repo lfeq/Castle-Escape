@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
   public static GameManager s_instance;
   
   private GameState m_gameState;
+  private string m_newLevel;
 
     private void Awake() {
         if(FindObjectOfType<GameManager>() != null && 
@@ -19,17 +20,6 @@ public class GameManager : MonoBehaviour
         m_gameState = GameState.None;
     }
 
-
-    // Start is called before the first frame update
-    void Start() {
-
-    }
-
-    // Update is called once per frame
-    void Update() {
-        
-    }
-
     public void changeGameSate(GameState t_newState) {
         if(m_gameState == t_newState) {
             return;
@@ -39,16 +29,19 @@ public class GameManager : MonoBehaviour
             case GameState.None:
                 break;
             case GameState.LoadMainMenu:
+                loadMenu();
                 break;
             case GameState.MainMenu:
                 break;
             case GameState.LoadLevel:
-                startGame();
+                loadLevel();
                 break;
             case GameState.Playing:
                 break;
+            case GameState.RestartLevel:
+                restartLevel();
+                break;
             case GameState.GameOver:
-                gameOver();
                 break;
             default:
                 throw new UnityException("Invalid Game State");
@@ -58,21 +51,26 @@ public class GameManager : MonoBehaviour
     public void changeGameStateInEditor(string t_newState) {
         changeGameSate((GameState)System.Enum.Parse(typeof(GameState), t_newState));
     }
-    
-    public void startGame() {
-       
-    }
 
     public GameState getGameState() {
         return m_gameState;
     }
-
-    public void restartLevel() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    
+    public void setNewLevelName(string t_newLevel) {
+        m_newLevel = t_newLevel;
     }
 
-    public void gameOver() {
-        restartLevel();
+    public void loadMenu() {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    private void restartLevel() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    
+
+    private void loadLevel() {
+        SceneManager.LoadScene(m_newLevel);
     }
 }
 
@@ -82,5 +80,6 @@ public enum GameState {
     MainMenu,
     LoadLevel,
     Playing,
+    RestartLevel,
     GameOver
 }

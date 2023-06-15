@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,57 +8,48 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
 
-    [SerializeField] private CanvasGroup youDiedCanvasGroup;
-    [SerializeField] private CanvasGroup youWinCanvasGroup;
-    [SerializeField] private float restartLevelTimeInSeconds = 2f;
+    [SerializeField] private CanvasGroup gameOverCanvasGroup;
+    [SerializeField] private Vector2 spawnPosition;
 
-    private bool isShowingYouDiedScreen;
-    private bool isShowingYouWinScreen;
+    private bool m_isShowingYouDiedScreen;
+    private bool m_isShowingYouWinScreen;
 
-    // Start is called before the first frame update
     void Awake()
     {
+        if(FindObjectOfType<LevelManager>() != null && 
+           FindObjectOfType<LevelManager>().gameObject != gameObject) {
+            Destroy(gameObject);
+            return;
+        }
         instance = this;
-        isShowingYouDiedScreen = false;
-        youDiedCanvasGroup.alpha = 0;
-        youWinCanvasGroup.alpha = 0;
+        m_isShowingYouDiedScreen = false;
+        gameOverCanvasGroup.alpha = 0;
+    }
+
+    private void Start() {
+        GameManager.s_instance.changeGameSate(GameState.Playing);
     }
 
     private void Update() {
-        showingYouDiedScreen();
-        showingYouWinSceen();
+        showingGameOverScreen();
+    }
+    
+    public void showGameOverScreen() {
+        m_isShowingYouDiedScreen = true;
     }
 
-    private void showingYouWinSceen() {
-        if (!isShowingYouWinScreen) {
+    public void restartLevel() {
+        GameManager.s_instance.changeGameSate(GameState.RestartLevel);
+    }
+
+    public void returnToMenu() {
+        GameManager.s_instance.changeGameSate(GameState.LoadMainMenu);
+    }
+
+    private void showingGameOverScreen() {
+        if (!m_isShowingYouDiedScreen) {
             return;
         }
-
-        youWinCanvasGroup.alpha += Time.deltaTime;
-    }
-
-    private void showingYouDiedScreen() {
-        if (!isShowingYouDiedScreen) {
-            return;
-        }
-
-        youDiedCanvasGroup.alpha += Time.deltaTime;
-    }
-
-    public void showYouWinScreen() {
-        isShowingYouWinScreen = true;
-        StartCoroutine(RestartLevel());
-    }
-
-    public void ShowYouDiedScreen() {
-        isShowingYouDiedScreen = true;
-        StartCoroutine(RestartLevel());
-    }
-
-    private IEnumerator RestartLevel() {
-
-        yield return new WaitForSeconds(restartLevelTimeInSeconds);
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        gameOverCanvasGroup.alpha += Time.deltaTime;
     }
 }

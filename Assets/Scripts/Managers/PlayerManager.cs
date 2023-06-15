@@ -16,80 +16,85 @@ public class PlayerManager : MonoBehaviour {
 
     [SerializeField] private GameObject promptObject;
 
-    private Animator animator;
-    private PlayerState playerState;
-    private Rigidbody2D rb2d;
+    private Animator m_animator;
+    private PlayerState m_playerState;
+    private Rigidbody2D m_rb2d;
 
     private void Awake() {
+        if(FindObjectOfType<PlayerManager>() != null && 
+           FindObjectOfType<PlayerManager>().gameObject != gameObject) {
+            Destroy(gameObject);
+            return;
+        }
         instance = this;
-        playerState = PlayerState.None;
-        rb2d = GetComponent<Rigidbody2D>();
+        m_playerState = PlayerState.None;
+        m_rb2d = GetComponent<Rigidbody2D>();
     }
 
     // Start is called before the first frame update
     void Start() {
-        animator = GetComponent<Animator>();
+        m_animator = GetComponent<Animator>();
         promptObject.SetActive(false);
     }
 
-    public void changePlayerSate(PlayerState newSate) {
-        if (playerState == newSate) {
+    public void changePlayerSate(PlayerState t_newSate) {
+        if (m_playerState == t_newSate) {
             return;
         }
         resetAnimatorParameters();
-        playerState = newSate;
-        switch (playerState) {
+        m_playerState = t_newSate;
+        switch (m_playerState) {
             case PlayerState.None:
                 break;
             case PlayerState.Idle:
-                animator.SetBool("isIdeling", true);
+                m_animator.SetBool("isIdeling", true);
                 break;
             case PlayerState.Running:
-                animator.SetBool("isRunning", true);
+                m_animator.SetBool("isRunning", true);
                 break;
             case PlayerState.Jump:
-                animator.SetBool("isJumpng", true);
+                m_animator.SetBool("isJumpng", true);
                 break;
             case PlayerState.JumpFall:
-                animator.SetBool("isFalling", true);
+                m_animator.SetBool("isFalling", true);
                 break;
             case PlayerState.FreeFall:
-                animator.SetBool("isFalling", true);
+                m_animator.SetBool("isFalling", true);
                 break;
             case PlayerState.Dead:
-                rb2d.velocity = new Vector2(0, 0);
-                animator.SetBool("isDying", true);
+                m_rb2d.velocity = new Vector2(0, 0);
+                m_animator.SetBool("isDying", true);
                 break;
         }
     }
 
     private void resetAnimatorParameters() {
-        foreach (AnimatorControllerParameter parameter in animator.parameters) {
+        foreach (AnimatorControllerParameter parameter in m_animator.parameters) {
             if (parameter.type == AnimatorControllerParameterType.Bool) {
-                animator.SetBool(parameter.name, false);
+                m_animator.SetBool(parameter.name, false);
             }
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.CompareTag("Interactable")) {
+    private void OnTriggerEnter2D(Collider2D t_collision) {
+        if (t_collision.CompareTag("Interactable")) {
             promptObject.SetActive(true);
-            interactableObject = collision.gameObject;
+            interactableObject = t_collision.gameObject;
         }
 
-        if (collision.CompareTag("Finish")) {
-            LevelManager.instance.showYouWinScreen();
+        if (t_collision.CompareTag("Finish")) {
+            //Tell game Manager we finish
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision) {
-        if (collision.CompareTag("Interactable")) {
+    private void OnTriggerExit2D(Collider2D t_collision) {
+        if (t_collision.CompareTag("Interactable")) {
             promptObject.SetActive(false);
             interactableObject = null;
         }
     }
 
-    public void GetKey() {
+    public void getKey() {
         hasKey = true;
     }
 }
