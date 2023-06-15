@@ -21,4 +21,8 @@ public class MenuManager : MonoBehaviour {
         GameManager.s_instance.setNewLevelName("Level1");
         GameManager.s_instance.changeGameSate(GameState.LoadLevel);
     }
+
+    public void exitGame() {
+        GameManager.s_instance.changeGameSate(GameState.QuitGame);
+    }
 }

@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -43,6 +42,10 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.GameOver:
                 break;
+            case GameState.Credits:
+                break;
+            case GameState.QuitGame:
+                break;
             default:
                 throw new UnityException("Invalid Game State");
         }
@@ -72,6 +75,10 @@ public class GameManager : MonoBehaviour
     private void loadLevel() {
         SceneManager.LoadScene(m_newLevel);
     }
+
+    private void quitGame() {
+        Application.Quit();
+    }
 }
 
 public enum GameState {
@@ -81,5 +88,7 @@ public enum GameState {
     LoadLevel,
     Playing,
     RestartLevel,
-    GameOver
+    GameOver,
+    Credits,
+    QuitGame,
 }

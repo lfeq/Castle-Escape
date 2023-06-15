@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -18,8 +16,8 @@ public class PlayerController : MonoBehaviour {
     #endregion
 
     #region Private
-    private Rigidbody2D rb2D;
-    private bool isFacingRight, isGrounded;
+    private Rigidbody2D m_rb2D;
+    private bool m_isFacingRight, m_isGrounded;
     #endregion
 
     #region Serialize Fields
@@ -29,18 +27,18 @@ public class PlayerController : MonoBehaviour {
 
     private void Awake() {
         instance = this;
-        isFacingRight = true;
-        isGrounded = false;
+        m_isFacingRight = true;
+        m_isGrounded = false;
     }
 
     // Start is called before the first frame update
     void Start() {
-        rb2D = GetComponent<Rigidbody2D>();
+        m_rb2D = GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate() {
-        isGrounded = Physics2D.OverlapCircle(footPosition.position, footRadious, whatIsGround) &&
-                                rb2D.velocity.y < 0.1f;
+        m_isGrounded = Physics2D.OverlapCircle(footPosition.position, footRadious, whatIsGround) &&
+                                m_rb2D.velocity.y < 0.1f;
 
         horizontalMovement();
         verticalMovement();
@@ -48,11 +46,11 @@ public class PlayerController : MonoBehaviour {
 
     private void horizontalMovement() {
         float xMove = Input.GetAxisRaw("Horizontal");
-        rb2D.velocity = new Vector2(xMove * xSpeed, rb2D.velocity.y);
-        if ((xMove < 0 && isFacingRight) || (xMove > 0 && !isFacingRight)) {
+        m_rb2D.velocity = new Vector2(xMove * xSpeed, m_rb2D.velocity.y);
+        if ((xMove < 0 && m_isFacingRight) || (xMove > 0 && !m_isFacingRight)) {
             flip();
         }
-        if (isGrounded) {
+        if (m_isGrounded) {
             if (xMove != 0) {
                 PlayerManager.instance.changePlayerSate(PlayerState.Running);
             } else if (xMove == 0) {
@@ -62,12 +60,12 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void verticalMovement() {
-        if (isGrounded) {
+        if (m_isGrounded) {
             return;
         }
-        if (rb2D.velocity.y >= 0.1f) {
+        if (m_rb2D.velocity.y >= 0.1f) {
             PlayerManager.instance.changePlayerSate(PlayerState.Jump);
-        } else if (rb2D.velocity.y < -0.1f) {
+        } else if (m_rb2D.velocity.y < -0.1f) {
             PlayerManager.instance.changePlayerSate(PlayerState.JumpFall);
         }
     }
@@ -96,15 +94,15 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void jump() {
-        if (!isGrounded) {
+        if (!m_isGrounded) {
             return;
         }
-        rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce);
+        m_rb2D.velocity = new Vector2(m_rb2D.velocity.x, jumpForce);
     }
 
     private void flip() {
         transform.Rotate(0, 180, 0);
-        isFacingRight = !isFacingRight;
+        m_isFacingRight = !m_isFacingRight;
     }
 
     private void OnDrawGizmos() {

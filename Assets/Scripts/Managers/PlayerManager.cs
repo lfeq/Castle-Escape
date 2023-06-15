@@ -27,14 +27,14 @@ public class PlayerManager : MonoBehaviour {
             return;
         }
         instance = this;
-        m_playerState = PlayerState.None;
-        m_rb2d = GetComponent<Rigidbody2D>();
     }
 
     // Start is called before the first frame update
     void Start() {
         m_animator = GetComponent<Animator>();
         promptObject.SetActive(false);
+        m_playerState = PlayerState.None;
+        m_rb2d = GetComponent<Rigidbody2D>();
     }
 
     public void changePlayerSate(PlayerState t_newSate) {
@@ -83,7 +83,7 @@ public class PlayerManager : MonoBehaviour {
         }
 
         if (t_collision.CompareTag("Finish")) {
-            //Tell game Manager we finish
+            LevelManager.instance.endLevel();
         }
     }
 

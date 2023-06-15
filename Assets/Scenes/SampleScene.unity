@@ -2719,6 +2719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e4dee85b581ef45aec2a2c756a1a90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 5
 --- !u!70 &352255188
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -3097,11 +3098,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   requiresKey: 0
---- !u!225 &467422779 stripped
-CanvasGroup:
-  m_CorrespondingSourceObject: {fileID: 7304940269531455437, guid: ac6f6d0e1a46cfd409fce499e011e91e, type: 3}
-  m_PrefabInstance: {fileID: 7304940269634458102}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &512130212
 GameObject:
   m_ObjectHideFlags: 0
@@ -4753,6 +4749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e4dee85b581ef45aec2a2c756a1a90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 5
 --- !u!1 &916752727
 GameObject:
   m_ObjectHideFlags: 0
@@ -5234,6 +5231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e4dee85b581ef45aec2a2c756a1a90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 5
 --- !u!70 &1183774024
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -64214,6 +64212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e4dee85b581ef45aec2a2c756a1a90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 5
 --- !u!70 &1327802021
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -70837,11 +70836,6 @@ PolygonCollider2D:
       - {x: -11, y: 26}
       - {x: -11, y: -12}
       - {x: 58, y: -12}
---- !u!225 &1726934844 stripped
-CanvasGroup:
-  m_CorrespondingSourceObject: {fileID: 7304940269079428810, guid: ac6f6d0e1a46cfd409fce499e011e91e, type: 3}
-  m_PrefabInstance: {fileID: 7304940269634458102}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1802525138
 GameObject:
   m_ObjectHideFlags: 0
@@ -70889,6 +70883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e4dee85b581ef45aec2a2c756a1a90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 5
 --- !u!70 &1802525141
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -71058,10 +71053,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1db7d2150ad13c4449f9a28dd0d2a686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  youDiedCanvasGroup: {fileID: 1726934844}
-  youWinCanvasGroup: {fileID: 467422779}
-  restartLevelTimeInSeconds: 4
+  gameOverCanvasGroup: {fileID: 0}
   spawnPosition: {x: 0, y: 0}
+  player: {fileID: 0}
+  nextLevelName: 
+  virtualCamera: {fileID: 0}
 --- !u!4 &2040428460
 Transform:
   m_ObjectHideFlags: 0
@@ -83727,6 +83723,10 @@ PrefabInstance:
     - target: {fileID: 7304940270027413366, guid: ac6f6d0e1a46cfd409fce499e011e91e, type: 3}
       propertyPath: m_Name
       value: GameCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7304940270027413366, guid: ac6f6d0e1a46cfd409fce499e011e91e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac6f6d0e1a46cfd409fce499e011e91e, type: 3}
