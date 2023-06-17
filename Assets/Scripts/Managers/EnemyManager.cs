@@ -8,12 +8,12 @@ public class EnemyManager : MonoBehaviour {
     [SerializeField] private int objectPoolLimit = 5;
     [SerializeField] private float spawnTimeInSeconds = 3f;
 
-    private Queue<GameObject> m_pipePool;
+    private Queue<GameObject> m_fireBallPool;
     private bool m_canInstantiate = true;
 
     private void Start() {
         StartCoroutine(spawning());
-        m_pipePool = new Queue<GameObject>();
+        m_fireBallPool = new Queue<GameObject>();
     }
 
     private IEnumerator spawning() {
@@ -23,16 +23,17 @@ public class EnemyManager : MonoBehaviour {
                 continue;
             }
             if (m_canInstantiate) {
-                m_pipePool.Enqueue(Instantiate(fireBall, startPos, Quaternion.identity));
-                if (m_pipePool.Count > objectPoolLimit) {
+                m_fireBallPool.Enqueue(Instantiate(fireBall, startPos, Quaternion.identity));
+                if (m_fireBallPool.Count > objectPoolLimit) {
                     m_canInstantiate = false;
                 }
             }
             else {
-                GameObject tempGo = m_pipePool.Dequeue();
+                GameObject tempGo = m_fireBallPool.Dequeue();
                 tempGo.transform.position = startPos;
                 tempGo.SetActive(true);
-                m_pipePool.Enqueue(tempGo);
+                tempGo.GetComponent<EnemyBehaviour>().resetDirection();
+                m_fireBallPool.Enqueue(tempGo);
             }
         }
     }
