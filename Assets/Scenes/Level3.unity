@@ -163,6 +163,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3904335299987840564, guid: 1b45816cfa10dfb4d91abb300cbfc2c5, type: 3}
+      propertyPath: nextLevelName
+      value: Credits
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904335299987840564, guid: 1b45816cfa10dfb4d91abb300cbfc2c5, type: 3}
       propertyPath: virtualCamera
       value: 
       objectReference: {fileID: 1893206203}
