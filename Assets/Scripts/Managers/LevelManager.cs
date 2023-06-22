@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 
@@ -14,26 +11,26 @@ public class LevelManager : MonoBehaviour {
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
 
     private bool m_isShowingYouDiedScreen;
-    private bool m_isShowingYouWinScreen;
 
-    void Awake() {
+    private void Awake() {
         if (FindObjectOfType<LevelManager>() != null &&
             FindObjectOfType<LevelManager>().gameObject != gameObject) {
             Destroy(gameObject);
             return;
         }
-
         instance = this;
         m_isShowingYouDiedScreen = false;
         gameOverCanvasGroup.alpha = 0;
+        if (PlayerManager.instance == null) {
+            Instantiate(player);
+        }
     }
 
     private void Start() {
         GameManager.s_instance.changeGameSate(GameState.Playing);
-        if (PlayerManager.instance == null) {
-            Instantiate(player);
-        }
         PlayerManager.instance.transform.position = spawnPosition;
+        PlayerManager.instance.changePlayerSate(PlayerState.Idle);
+        PlayerController.instance.enabled = true;
         virtualCamera.Follow = PlayerManager.instance.transform;
     }
 

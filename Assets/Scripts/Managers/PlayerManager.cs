@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -21,17 +19,18 @@ public class PlayerManager : MonoBehaviour {
     private Rigidbody2D m_rb2d;
 
     private void Awake() {
-        if(FindObjectOfType<PlayerManager>() != null && 
-           FindObjectOfType<PlayerManager>().gameObject != gameObject) {
+        m_animator = GetComponent<Animator>();
+        if (FindObjectOfType<PlayerManager>() != null &&
+            FindObjectOfType<PlayerManager>().gameObject != gameObject) {
             Destroy(gameObject);
             return;
         }
         instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     // Start is called before the first frame update
-    void Start() {
-        m_animator = GetComponent<Animator>();
+    private void Start() {
         promptObject.SetActive(false);
         m_playerState = PlayerState.None;
         m_rb2d = GetComponent<Rigidbody2D>();
@@ -108,4 +107,3 @@ public enum PlayerState {
     FreeFall,
     Dead
 }
-

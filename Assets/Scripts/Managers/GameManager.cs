@@ -1,16 +1,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
-{
-  public static GameManager s_instance;
-  
-  private GameState m_gameState;
-  private string m_newLevel;
+public class GameManager : MonoBehaviour {
+    public static GameManager s_instance;
+
+    private GameState m_gameState;
+    private string m_newLevel;
 
     private void Awake() {
-        if(FindObjectOfType<GameManager>() != null && 
-            FindObjectOfType<GameManager>().gameObject != gameObject) {
+        if (s_instance != null && s_instance != this) {
             Destroy(gameObject);
             return;
         }
@@ -20,7 +18,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void changeGameSate(GameState t_newState) {
-        if(m_gameState == t_newState) {
+        if (m_gameState == t_newState) {
             return;
         }
         m_gameState = t_newState;
@@ -45,6 +43,7 @@ public class GameManager : MonoBehaviour
             case GameState.Credits:
                 break;
             case GameState.QuitGame:
+                quitGame();
                 break;
             default:
                 throw new UnityException("Invalid Game State");
@@ -58,7 +57,7 @@ public class GameManager : MonoBehaviour
     public GameState getGameState() {
         return m_gameState;
     }
-    
+
     public void setNewLevelName(string t_newLevel) {
         m_newLevel = t_newLevel;
     }
@@ -70,7 +69,6 @@ public class GameManager : MonoBehaviour
     private void restartLevel() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    
 
     private void loadLevel() {
         SceneManager.LoadScene(m_newLevel);
