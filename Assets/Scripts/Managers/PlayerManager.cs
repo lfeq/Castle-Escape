@@ -61,7 +61,7 @@ public class PlayerManager : MonoBehaviour {
                 m_animator.SetBool("isFalling", true);
                 break;
             case PlayerState.Dead:
-                m_rb2d.velocity = new Vector2(0, 0);
+                m_rb2d.linearVelocity = new Vector2(0, 0);
                 m_animator.SetBool("isDying", true);
                 break;
         }
