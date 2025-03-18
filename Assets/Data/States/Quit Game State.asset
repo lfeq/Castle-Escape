@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6d05e8e9e904e829cdaef4ccd41e938, type: 3}
-  m_Name: New Changing Scene State
+  m_Script: {fileID: 11500000, guid: 6a59b04881744a2c84774a1d4c53f073, type: 3}
+  m_Name: Quit Game State
   m_EditorClassIdentifier: 
-  eventListener: {fileID: 11400000, guid: ba7a8d297dcc5804a88f7cc3af0b79ce, type: 2}
-  stateName: Main Menu
+  eventListener: {fileID: 11400000, guid: d626be6e7aad204479f741891d0d8755, type: 2}
+  stateName: Quit App
   debugMode: 1
-  sceneName: MainMenu

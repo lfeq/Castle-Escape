@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d49504a4834747f898a9c9a90584ac24, type: 3}
-  m_Name: Initial State
+  m_Script: {fileID: 11500000, guid: 0754e5d7403b4b789be7c24fd954027c, type: 3}
+  m_Name: Restart Current Scene State
   m_EditorClassIdentifier: 
-  eventListener: {fileID: 11400000, guid: ba7a8d297dcc5804a88f7cc3af0b79ce, type: 2}
-  stateName: Initial State
+  eventListener: {fileID: 11400000, guid: 8034833cda5ba6e48add6e5f98295211, type: 2}
+  stateName: Restart Current Scene
   debugMode: 1

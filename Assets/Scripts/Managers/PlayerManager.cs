@@ -82,7 +82,7 @@ public class PlayerManager : MonoBehaviour {
         }
 
         if (t_collision.CompareTag("Finish")) {
-            LevelManager.instance.endLevel();
+            // LevelManager.instance.endLevel();
         }
     }
 

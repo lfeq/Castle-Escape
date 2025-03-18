@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d49504a4834747f898a9c9a90584ac24, type: 3}
-  m_Name: Initial State
+  m_Script: {fileID: 11500000, guid: b6d05e8e9e904e829cdaef4ccd41e938, type: 3}
+  m_Name: Main Menu
   m_EditorClassIdentifier: 
   eventListener: {fileID: 11400000, guid: ba7a8d297dcc5804a88f7cc3af0b79ce, type: 2}
-  stateName: Initial State
+  stateName: Main Menu
   debugMode: 1
+  sceneName: MainMenu
