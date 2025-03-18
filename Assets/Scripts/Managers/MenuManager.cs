@@ -1,20 +1,21 @@
+using Application_Manager.Events;
 using UnityEngine;
 
 public class MenuManager : MonoBehaviour {
     public static MenuManager s_instance;
+    [SerializeField] private ApplicationEvent menuEvent;
 
     private void Awake() {
-        if(FindObjectOfType<MenuManager>() != null && 
-           FindObjectOfType<MenuManager>().gameObject != gameObject) {
+        if (FindObjectOfType<MenuManager>() != null &&
+            FindObjectOfType<MenuManager>().gameObject != gameObject) {
             Destroy(gameObject);
             return;
         }
         s_instance = this;
     }
 
-    private void Start()
-    {
-        GameManager.s_instance.changeGameSate(GameState.MainMenu);
+    private void Start() {
+        menuEvent.Raise();
     }
 
     public void startGame() {

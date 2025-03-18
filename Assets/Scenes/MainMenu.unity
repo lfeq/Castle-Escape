@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a7c90ff17ef274d8e2a3cb414088cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuEvent: {fileID: 11400000, guid: 3e99782860400784493dd6cda8de2edf, type: 2}
 --- !u!4 &92234869
 Transform:
   m_ObjectHideFlags: 0
@@ -211,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -678,6 +679,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1001793323}
   m_CullTransparentMesh: 1
+--- !u!1 &1019692671
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1019692673}
+  - component: {fileID: 1019692672}
+  m_Layer: 0
+  m_Name: '[Application Manager]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1019692672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019692671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4e75ef426f44cc5bcd55a7ad6456c11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnparentOnAwake: 1
+  initialState: {fileID: 11400000, guid: 12e2d1537095a514a8d483c5ac1b5e0d, type: 2}
+--- !u!4 &1019692673
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019692671}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1305549055
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,6 +937,10 @@ PrefabInstance:
     - target: {fileID: 8926691200077729392, guid: d964572f99102b248b6e57247e5030f9, type: 3}
       propertyPath: m_Name
       value: '[GameManager]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8926691200077729392, guid: d964572f99102b248b6e57247e5030f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8926691200077729394, guid: d964572f99102b248b6e57247e5030f9, type: 3}
       propertyPath: m_RootOrder
@@ -1157,3 +1208,4 @@ SceneRoots:
   - {fileID: 1316587227}
   - {fileID: 1630356559}
   - {fileID: 92234869}
+  - {fileID: 1019692673}

@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.lorenz_equihua.improved_game_manager": {
+      "version": "https://github.com/lfeq/Improved-Game-Manager.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "b2fb8e36e82f2370e8d6cfc3c10adad0d5dc6098"
+    },
     "com.unity.2d.animation": {
       "version": "10.1.4",
       "depth": 1,
@@ -162,7 +169,7 @@
       }
     },
     "com.unity.ide.rider": {
-      "version": "3.0.31",
+      "version": "3.0.34",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -177,13 +184,6 @@
       "dependencies": {
         "com.unity.test-framework": "1.1.9"
       },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.ide.vscode": {
-      "version": "1.2.5",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.mathematics": {
@@ -318,6 +318,13 @@
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
+    },
+    "com.unitycommunity.unitysingleton": {
+      "version": "https://github.com/UnityCommunity/UnitySingleton.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "060010138f7a4dc2768a58f81d9b43f01d316000"
     },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",
