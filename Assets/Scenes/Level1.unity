@@ -162,6 +162,7 @@ GameObject:
   - component: {fileID: 235997061}
   - component: {fileID: 235997060}
   - component: {fileID: 235997059}
+  - component: {fileID: 235997062}
   m_Layer: 0
   m_Name: Finish
   m_TagString: Finish
@@ -285,6 +286,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &235997062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235997058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9589d3aa2314d098e787685ef574513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goToNextLevelEvent: {fileID: 11400000, guid: 79bfcac3e1a3b6148a6c6c1547af59da, type: 2}
 --- !u!1 &300272158
 GameObject:
   m_ObjectHideFlags: 0
@@ -118355,7 +118369,7 @@ Transform:
   m_GameObject: {fileID: 1568026769}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.7447605, y: 2.6000001, z: -10}
+  m_LocalPosition: {x: 3.5111084, y: 2.6000001, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -129905,6 +129919,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3904335299987840564, guid: 1b45816cfa10dfb4d91abb300cbfc2c5, type: 3}
+      propertyPath: goToMenuEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 3e99782860400784493dd6cda8de2edf, type: 2}
+    - target: {fileID: 3904335299987840564, guid: 1b45816cfa10dfb4d91abb300cbfc2c5, type: 3}
       propertyPath: nextLevelName
       value: Level2
       objectReference: {fileID: 0}
@@ -129920,6 +129938,10 @@ PrefabInstance:
       propertyPath: restartLevelEvent
       value: 
       objectReference: {fileID: 11400000, guid: 1a37f8b724148674baff39c75f648311, type: 2}
+    - target: {fileID: 3904335299987840564, guid: 1b45816cfa10dfb4d91abb300cbfc2c5, type: 3}
+      propertyPath: goToNextLevelEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 79bfcac3e1a3b6148a6c6c1547af59da, type: 2}
     - target: {fileID: 3904335299987840564, guid: 1b45816cfa10dfb4d91abb300cbfc2c5, type: 3}
       propertyPath: gameOverCanvasGroup
       value: 
@@ -130033,6 +130055,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6769345357318124216, guid: c995bfb99c0b1074e85c64cf99834f62, type: 3}
+      propertyPath: playingState
+      value: 
+      objectReference: {fileID: 11400000, guid: fb46b4c45082724478eb6ab9bdb718e2, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Application_Manager;
 using Application_Manager.States;
 using UnityEngine;
 
@@ -9,8 +10,7 @@ public class EnemyManager : MonoBehaviour {
     [SerializeField] private int objectPoolLimit = 5;
     [SerializeField] private float spawnTimeInSeconds = 3f;
 
-    [Header("Game States")] 
-    [SerializeField] private BaseState gameOverState;
+    [Header("Game States")]
     [SerializeField] private BaseState playingState;
     
 
@@ -19,29 +19,26 @@ public class EnemyManager : MonoBehaviour {
 
     private void Start() {
         m_fireBallPool = new Queue<GameObject>();
-        // StartCoroutine(spawning());
+        StartCoroutine(spawning());
     }
     
     // TODO: Update this methods to improved game manager
-    // private IEnumerator spawning() {
-    //     while (GameManager.s_instance.getGameState() != GameState.GameOver) {
-    //         yield return new WaitForSeconds(spawnTimeInSeconds);
-    //         if (GameManager.s_instance.getGameState() != GameState.Playing) {
-    //             continue;
-    //         }
-    //         if (m_canInstantiate) {
-    //             m_fireBallPool.Enqueue(Instantiate(fireBall, startPos, Quaternion.identity));
-    //             if (m_fireBallPool.Count > objectPoolLimit) {
-    //                 m_canInstantiate = false;
-    //             }
-    //         }
-    //         else {
-    //             GameObject tempGo = m_fireBallPool.Dequeue();
-    //             tempGo.transform.position = startPos;
-    //             tempGo.SetActive(true);
-    //             tempGo.GetComponent<EnemyBehaviour>().resetDirection();
-    //             m_fireBallPool.Enqueue(tempGo);
-    //         }
-    //     }
-    // }
+    private IEnumerator spawning() {
+        while (ApplicationManager.Instance.GetCurrentState() == playingState) {
+            yield return new WaitForSeconds(spawnTimeInSeconds);
+            if (m_canInstantiate) {
+                m_fireBallPool.Enqueue(Instantiate(fireBall, startPos, Quaternion.identity));
+                if (m_fireBallPool.Count > objectPoolLimit) {
+                    m_canInstantiate = false;
+                }
+            }
+            else {
+                GameObject tempGo = m_fireBallPool.Dequeue();
+                tempGo.transform.position = startPos;
+                tempGo.SetActive(true);
+                tempGo.GetComponent<EnemyBehaviour>().resetDirection();
+                m_fireBallPool.Enqueue(tempGo);
+            }
+        }
+    }
 }

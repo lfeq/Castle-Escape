@@ -1,3 +1,4 @@
+using Application_Manager.Events;
 using UnityEngine;
 
 /// <summary>
@@ -79,10 +80,6 @@ public class PlayerManager : MonoBehaviour {
         if (t_collision.CompareTag("Interactable")) {
             promptObject.SetActive(true);
             interactableObject = t_collision.gameObject;
-        }
-
-        if (t_collision.CompareTag("Finish")) {
-            // LevelManager.instance.endLevel();
         }
     }
 

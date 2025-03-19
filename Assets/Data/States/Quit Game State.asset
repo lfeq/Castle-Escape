@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventListener: {fileID: 11400000, guid: d626be6e7aad204479f741891d0d8755, type: 2}
   stateName: Quit App
-  debugMode: 1
+  debugMode: 0

@@ -1,12 +1,15 @@
+using Application_Manager.Events;
 using UnityEngine;
 
-public class CreditsManager : MonoBehaviour
-{
+public class CreditsManager : MonoBehaviour {
+    [SerializeField] private ApplicationEvent creditsEvent;
+    [SerializeField] private ApplicationEvent goToMenuEvent;
+    
     private void Start() {
-        GameManager.s_instance.changeGameSate(GameState.Credits);
+        creditsEvent.Raise();
     }
 
     public void returnToMenu() {
-        GameManager.s_instance.changeGameSate(GameState.LoadMainMenu);
+        goToMenuEvent.Raise();
     }
 }
