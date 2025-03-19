@@ -13,20 +13,4 @@ MonoBehaviour:
   m_Name: On Change To Menu State Listener
   m_EditorClassIdentifier: 
   Event: {fileID: 11400000, guid: 3e99782860400784493dd6cda8de2edf, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000}
-        m_TargetAssemblyTypeName: Application_Manager.Events.ApplicationEventListener,
-          Application_Manager
-        m_MethodName: ChangeState
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 4c8d728b4d82935449118c9f115dd8e2, type: 2}
-          m_ObjectArgumentAssemblyTypeName: Application_Manager.States.BaseState,
-            Application_Manager
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  stateToChangeTo: {fileID: 11400000, guid: 4c8d728b4d82935449118c9f115dd8e2, type: 2}

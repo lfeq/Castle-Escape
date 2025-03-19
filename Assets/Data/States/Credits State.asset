@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6d05e8e9e904e829cdaef4ccd41e938, type: 3}
   m_Name: Credits State
   m_EditorClassIdentifier: 
-  eventListener: {fileID: 0}
+  eventListener: {fileID: 11400000, guid: f70a4e45e110752469846960fc56c2bb, type: 2}
   stateName: Credits
   debugMode: 1
   sceneName: Credits
