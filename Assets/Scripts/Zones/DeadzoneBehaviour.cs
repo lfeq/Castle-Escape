@@ -7,7 +7,6 @@ public class DeadzoneBehaviour : MonoBehaviour
             PlayerManager.instance.changePlayerSate(PlayerState.Dead);
             PlayerController.instance.enabled = false;
             LevelManager.instance.showGameOverScreen();
-            GameManager.s_instance.changeGameSate(GameState.GameOver);
         }
     }
 }

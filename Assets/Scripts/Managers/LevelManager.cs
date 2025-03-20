@@ -1,3 +1,4 @@
+using Application_Manager.Events;
 using Cinemachine;
 using UnityEngine;
 
@@ -9,6 +10,10 @@ public class LevelManager : MonoBehaviour {
     [SerializeField] private GameObject player;
     [SerializeField] private string nextLevelName;
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
+    [SerializeField] private ApplicationEvent enteredLevelEvent;
+    [SerializeField] private ApplicationEvent restartLevelEvent;
+    [SerializeField] private ApplicationEvent goToMenuEvent;
+    [SerializeField] private ApplicationEvent goToNextLevelEvent;
 
     private bool m_isShowingYouDiedScreen;
 
@@ -27,7 +32,8 @@ public class LevelManager : MonoBehaviour {
     }
 
     private void Start() {
-        GameManager.s_instance.changeGameSate(GameState.Playing);
+        // GameManager.s_instance.changeGameSate(GameState.Playing);
+        enteredLevelEvent.Raise();
         PlayerManager.instance.transform.position = spawnPosition;
         PlayerManager.instance.changePlayerSate(PlayerState.Idle);
         PlayerController.instance.enabled = true;
@@ -41,18 +47,18 @@ public class LevelManager : MonoBehaviour {
     public void showGameOverScreen() {
         m_isShowingYouDiedScreen = true;
     }
-
+    
     public void restartLevel() {
-        GameManager.s_instance.changeGameSate(GameState.RestartLevel);
+        Debug.Log("restartLevel");
+        restartLevelEvent.Raise();
     }
-
+    
     public void returnToMenu() {
-        GameManager.s_instance.changeGameSate(GameState.LoadMainMenu);
+        goToMenuEvent.Raise();
     }
-
+    
     public void endLevel() {
-        GameManager.s_instance.setNewLevelName(nextLevelName);
-        GameManager.s_instance.changeGameSate(GameState.LoadLevel);
+        goToNextLevelEvent.Raise();
     }
 
     private void showingGameOverScreen() {

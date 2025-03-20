@@ -13,7 +13,7 @@ public class EnemyBehaviour : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        m_rb2d.velocity = m_direction * moveSpeed;
+        m_rb2d.linearVelocity = m_direction * moveSpeed;
     }
 
     private void OnTriggerEnter2D(Collider2D t_collision) {

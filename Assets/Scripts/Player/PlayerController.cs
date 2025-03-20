@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour {
 
     private void FixedUpdate() {
         m_isGrounded = Physics2D.OverlapCircle(footPosition.position, footRadious, whatIsGround) &&
-                                m_rb2D.velocity.y < 0.1f;
+                                m_rb2D.linearVelocity.y < 0.1f;
 
         horizontalMovement();
         verticalMovement();
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour {
 
     private void horizontalMovement() {
         float xMove = Input.GetAxisRaw("Horizontal");
-        m_rb2D.velocity = new Vector2(xMove * xSpeed, m_rb2D.velocity.y);
+        m_rb2D.linearVelocity = new Vector2(xMove * xSpeed, m_rb2D.linearVelocity.y);
         if ((xMove < 0 && m_isFacingRight) || (xMove > 0 && !m_isFacingRight)) {
             flip();
         }
@@ -63,9 +63,9 @@ public class PlayerController : MonoBehaviour {
         if (m_isGrounded) {
             return;
         }
-        if (m_rb2D.velocity.y >= 0.1f) {
+        if (m_rb2D.linearVelocity.y >= 0.1f) {
             PlayerManager.instance.changePlayerSate(PlayerState.Jump);
-        } else if (m_rb2D.velocity.y < -0.1f) {
+        } else if (m_rb2D.linearVelocity.y < -0.1f) {
             PlayerManager.instance.changePlayerSate(PlayerState.JumpFall);
         }
     }
@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour {
         if (!m_isGrounded) {
             return;
         }
-        m_rb2D.velocity = new Vector2(m_rb2D.velocity.x, jumpForce);
+        m_rb2D.linearVelocity = new Vector2(m_rb2D.linearVelocity.x, jumpForce);
     }
 
     private void flip() {
