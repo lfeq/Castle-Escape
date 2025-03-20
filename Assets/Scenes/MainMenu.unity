@@ -151,7 +151,7 @@ MonoBehaviour:
   menuEvent: {fileID: 11400000, guid: 3e99782860400784493dd6cda8de2edf, type: 2}
   startGameEvent: {fileID: 11400000, guid: 119fe5dce57881345ac030ab84f36ffb, type: 2}
   exitGameEvent: {fileID: 11400000, guid: 4385615d461c1bd4190a0dc0d6aaddaf, type: 2}
-  nextScene: {fileID: 11400000, guid: fb46b4c45082724478eb6ab9bdb718e2, type: 2}
+  nextScene: {fileID: 11400000, guid: 4209ab2bf0048d24dabb0e6208e1ca2c, type: 2}
 --- !u!4 &92234869
 Transform:
   m_ObjectHideFlags: 0
@@ -712,7 +712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnparentOnAwake: 1
-  initialState: {fileID: 11400000, guid: 12e2d1537095a514a8d483c5ac1b5e0d, type: 2}
+  initialState: {fileID: 11400000, guid: bd86dba6a33aa04479e24c66cc920311, type: 2}
 --- !u!4 &1019692673
 Transform:
   m_ObjectHideFlags: 0

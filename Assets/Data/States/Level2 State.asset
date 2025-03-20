@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6d05e8e9e904e829cdaef4ccd41e938, type: 3}
-  m_Name: Level 2
+  m_Script: {fileID: 11500000, guid: 167c604c5bd24e3b8bdad6e0f3ff1328, type: 3}
+  m_Name: Level2 State
   m_EditorClassIdentifier: 
   eventListener: {fileID: 11400000, guid: c0824a212bad63e4ba4a0a364b54e7f4, type: 2}
   stateName: Level 2
