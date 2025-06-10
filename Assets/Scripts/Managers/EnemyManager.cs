@@ -24,15 +24,21 @@ public class EnemyManager : MonoBehaviour {
     
     // TODO: Update this methods to improved game manager
     private IEnumerator spawning() {
+        WaitForSeconds wait = new WaitForSeconds(spawnTimeInSeconds);
         while (ApplicationManager.Instance.GetCurrentState() == playingState) {
-            yield return new WaitForSeconds(spawnTimeInSeconds);
+            yield return wait;
+
+            // Stop spawning if the game state changed while waiting
+            if (ApplicationManager.Instance.GetCurrentState() != playingState) {
+                yield break;
+            }
+
             if (m_canInstantiate) {
                 m_fireBallPool.Enqueue(Instantiate(fireBall, startPos, Quaternion.identity));
-                if (m_fireBallPool.Count > objectPoolLimit) {
+                if (m_fireBallPool.Count >= objectPoolLimit) {
                     m_canInstantiate = false;
                 }
-            }
-            else {
+            } else {
                 GameObject tempGo = m_fireBallPool.Dequeue();
                 tempGo.transform.position = startPos;
                 tempGo.SetActive(true);
